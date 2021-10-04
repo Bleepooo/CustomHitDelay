@@ -1,0 +1,3 @@
+name: Customhitdelay
+version: '${project.version}'
+main: dev.bleepo.customhitdelay.Main

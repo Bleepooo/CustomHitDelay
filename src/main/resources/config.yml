@@ -1,0 +1,2 @@
+#1 tick = 50ms. You're going to have to play with this value until you get the desired result
+maxticks: 10
