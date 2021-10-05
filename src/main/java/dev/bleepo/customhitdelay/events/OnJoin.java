@@ -4,7 +4,7 @@ import dev.bleepo.customhitdelay.Main;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
 public class OnJoin implements Listener {
     private final Main plugin;
@@ -14,8 +14,15 @@ public class OnJoin implements Listener {
     }
 
     @EventHandler
-    public void onJoin(PlayerJoinEvent e) {
-        Player player = e.getPlayer();
-        player.setMaximumNoDamageTicks(plugin.getConfig().getInt("maxticks"));
+    public void onDamage(EntityDamageByEntityEvent e) {
+        Player player = (Player) e.getEntity();
+        if (e.getEntity() instanceof Player) {
+            player.setMaximumNoDamageTicks(plugin.getConfig().getInt("maxticks"));
+        } else {
+            player.setMaximumNoDamageTicks(plugin.getConfig().getInt("defaultticks"));
+        }
     }
+
+
 }
+
